@@ -8,6 +8,7 @@ namespace E1ExtraCredit
 {
     public class LibraryModel
     {
+        //Type there
     }
     //TEST
     // Black Ice
