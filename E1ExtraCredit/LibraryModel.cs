@@ -60,11 +60,18 @@ namespace E1ExtraCredit
         //Sample Books
         public void AddBook(Book b)
         {
-           
+            books.Add(b);
         }
         public void RemoveBook(string SerialNum)
         {
-
+            foreach(Book b in books)
+            {
+                if(b._serialNumber == SerialNum)
+                {
+                    books.Remove(b); 
+                    break ;
+                }
+            }
         }
 
     }
