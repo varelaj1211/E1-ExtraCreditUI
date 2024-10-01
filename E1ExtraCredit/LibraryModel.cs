@@ -11,6 +11,8 @@ namespace E1ExtraCredit
     }
     //TEST
 
+    //R6
+
     public class Book
     {
         private int _page { get; set; }
