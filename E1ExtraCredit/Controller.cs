@@ -7,11 +7,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace E1ExtraCredit
 {
+    
     public class Controller
     {
         private LibraryModel model;
 
-        private delegate void UpdateLibrary(List<SerialNum> books);
+        
 
         public Controller(LibraryModel m)
         {

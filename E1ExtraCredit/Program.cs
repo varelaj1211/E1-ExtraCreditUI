@@ -1,7 +1,9 @@
 namespace E1ExtraCredit
 {
-    internal static class Program
+    public static class Program
     {
+
+        public delegate void UpdateLibrary(List<SerialNum> books);
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
