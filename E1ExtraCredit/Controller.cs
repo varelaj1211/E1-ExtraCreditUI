@@ -8,7 +8,7 @@ namespace E1ExtraCredit
 {
     public class Controller
     {
-
+        private LibraryModel model;
         public Controller()
         { 
         //tachacka
