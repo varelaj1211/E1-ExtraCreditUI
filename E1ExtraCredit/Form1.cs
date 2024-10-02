@@ -11,6 +11,7 @@ namespace E1ExtraCredit
 
         private void SyncButtonClick(object sender, EventArgs e)
         {
+            MessageBox.Show("Synchrozing Libraries");
             Book Book4 = new Book()
             {
                 _page = 832,
@@ -29,6 +30,7 @@ namespace E1ExtraCredit
             model.AddBook(Book4);
             model.AddBook(Book5);
             AddListToListView();
+
         }
 
         private void UpdateLibrary(List<string> books)
