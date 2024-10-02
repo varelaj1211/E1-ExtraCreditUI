@@ -21,7 +21,7 @@ namespace E1ExtraCredit
             InitializeComponent();
             selectedBook = book;
 
-            // Populate book details
+       
             lblTitle.Text = $"Title: {book._title}";
             lblAuthor.Text = $"Author: {book._author}";
             lblSerial.Text = $"Serial Number: {book._serialNumber}";

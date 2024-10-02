@@ -58,9 +58,9 @@ namespace E1ExtraCredit
                 int index = BookListViiew.SelectedItems[0].Index;
                 Book selectedBook = model.books[index];
 
-                // Open the book details form
+              
                 BookDetails detailsForm = new BookDetails(selectedBook);
-                detailsForm.ShowDialog(); // Show as a modal dialog
+                detailsForm.ShowDialog(); 
             }
         }
     }
