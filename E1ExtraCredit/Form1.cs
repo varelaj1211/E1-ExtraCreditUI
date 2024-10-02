@@ -5,6 +5,7 @@ namespace E1ExtraCredit
         public Form1(LibraryModel m)//, string serialNum)
         {
             InitializeComponent();
+            model = m;
             AddListToListView();
         }
 
