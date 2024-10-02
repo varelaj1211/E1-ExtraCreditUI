@@ -8,7 +8,7 @@ namespace E1ExtraCredit
 {
     public class LibraryModel
     {
-        private List<Book> books;
+        public List<Book> books;
 
 
         public LibraryModel() {

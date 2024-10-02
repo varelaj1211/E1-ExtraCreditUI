@@ -34,7 +34,7 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            listView1 = new ListView();
+            BookListViiew = new ListView();
             SuspendLayout();
             // 
             // label1
@@ -90,20 +90,20 @@
             label5.Size = new Size(0, 32);
             label5.TabIndex = 5;
             // 
-            // listView1
+            // BookListViiew
             // 
-            listView1.Location = new Point(66, 134);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(340, 213);
-            listView1.TabIndex = 6;
-            listView1.UseCompatibleStateImageBehavior = false;
+            BookListViiew.Location = new Point(66, 134);
+            BookListViiew.Name = "BookListViiew";
+            BookListViiew.Size = new Size(340, 213);
+            BookListViiew.TabIndex = 6;
+            BookListViiew.UseCompatibleStateImageBehavior = false;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            Controls.Add(BookListViiew);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -124,6 +124,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private ListView listView1;
+        private ListView BookListViiew;
     }
 }

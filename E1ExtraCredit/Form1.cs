@@ -5,6 +5,7 @@ namespace E1ExtraCredit
         public Form1(LibraryModel m, string serialNum)
         {
             InitializeComponent();
+            AddListToListView();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -15,6 +16,15 @@ namespace E1ExtraCredit
         private void UpdateLibrary(List<string> books)
         {
 
+        }
+
+        public LibraryModel model;
+        public void AddListToListView()
+        {
+            foreach(Book b in model.books) 
+            {
+                BookListViiew.Items.Add(b._title);
+            }
         }
     }
 }
