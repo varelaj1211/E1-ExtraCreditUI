@@ -34,26 +34,12 @@ namespace E1ExtraCredit
                 _serialNumber = "7483987265"
             };
 
-            Book Book4 = new Book()
-            {
-                _page = 832,
-                _title = "The Shining ",
-                _author = "Stephen King ",
-                _serialNumber = "3768925630"
-            };
-
-            Book Book5 = new Book()
-            {
-                _page = 283,
-                _title = "Hunger Games ",
-                _author = "Suzanne Collins ",
-                _serialNumber = "3567650928"
-            };
+        
             books!.Add(Book1);
             books.Add(Book2);
             books.Add(Book3);
-            books.Add(Book4);
-            books.Add(Book5);
+           // books.Add(Book4);
+           // books.Add(Book5);
         }
 
 

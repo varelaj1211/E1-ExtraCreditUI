@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
+            SyncButton = new Button();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -47,15 +47,15 @@
             label1.TabIndex = 0;
             label1.Text = "Welcome to CIS501 Library";
             // 
-            // button1
+            // SyncButton
             // 
-            button1.Location = new Point(471, 377);
-            button1.Name = "button1";
-            button1.Size = new Size(306, 46);
-            button1.TabIndex = 1;
-            button1.Text = "Sync Library from cloud";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            SyncButton.Location = new Point(471, 377);
+            SyncButton.Name = "SyncButton";
+            SyncButton.Size = new Size(306, 46);
+            SyncButton.TabIndex = 1;
+            SyncButton.Text = "Sync Library from cloud";
+            SyncButton.UseVisualStyleBackColor = true;
+            SyncButton.Click += SyncButtonClick;
             // 
             // label2
             // 
@@ -108,7 +108,7 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(button1);
+            Controls.Add(SyncButton);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
@@ -119,7 +119,7 @@
         #endregion
 
         private Label label1;
-        private Button button1;
+        private Button SyncButton;
         private Label label2;
         private Label label3;
         private Label label4;
