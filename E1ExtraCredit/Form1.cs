@@ -39,9 +39,12 @@ namespace E1ExtraCredit
         public void AddListToListView()
         {
             BookListViiew.Items.Clear();
-            foreach (Book b in model.books)
+            if (model != null && model.books != null)
             {
-                BookListViiew.Items.Add(b._title);
+                foreach (Book b in model.books)
+                {
+                    BookListViiew.Items.Add(new ListViewItem(b._title));
+                }
             }
         }
 

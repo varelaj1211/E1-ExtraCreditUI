@@ -8,10 +8,11 @@ namespace E1ExtraCredit
 {
     public class LibraryModel
     {
-        public List<Book> books;
+        public List<Book> books;// = new List<Book>();
 
 
         public LibraryModel() {
+            books = new List<Book>();
             Book Book1 = new Book()
             {
                 _page = 678,
@@ -35,7 +36,7 @@ namespace E1ExtraCredit
             };
 
         
-            books!.Add(Book1);
+            books.Add(Book1);
             books.Add(Book2);
             books.Add(Book3);
            // books.Add(Book4);
