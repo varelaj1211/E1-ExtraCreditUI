@@ -97,6 +97,7 @@
             BookListViiew.Size = new Size(340, 213);
             BookListViiew.TabIndex = 6;
             BookListViiew.UseCompatibleStateImageBehavior = false;
+            BookListViiew.SelectedIndexChanged += BookListViiew_SelectedIndexChanged;
             // 
             // Form1
             // 

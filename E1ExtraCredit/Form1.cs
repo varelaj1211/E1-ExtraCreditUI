@@ -39,9 +39,22 @@ namespace E1ExtraCredit
         public void AddListToListView()
         {
             BookListViiew.Items.Clear();
-            foreach(Book b in model.books) 
+            foreach (Book b in model.books)
             {
                 BookListViiew.Items.Add(b._title);
+            }
+        }
+
+        private void BookListViiew_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BookListViiew.SelectedItems.Count > 0)
+            {
+                int index = BookListViiew.SelectedItems[0].Index;
+                Book selectedBook = model.books[index];
+
+                // Open the book details form
+                BookDetails detailsForm = new BookDetails(selectedBook);
+                detailsForm.ShowDialog(); // Show as a modal dialog
             }
         }
     }

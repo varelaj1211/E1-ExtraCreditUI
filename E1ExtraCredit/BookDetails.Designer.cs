@@ -35,6 +35,9 @@
             lblTitle = new Label();
             lblSerial = new Label();
             lblPage = new Label();
+            BMButton = new Button();
+            GoToButton = new Button();
+            lblBookmark = new Label();
             SuspendLayout();
             // 
             // button1
@@ -54,6 +57,7 @@
             NextPageButton.TabIndex = 1;
             NextPageButton.Text = "Next Page";
             NextPageButton.UseVisualStyleBackColor = true;
+            NextPageButton.Click += NextPageButton_Click;
             // 
             // PrevPageButton
             // 
@@ -63,6 +67,7 @@
             PrevPageButton.TabIndex = 2;
             PrevPageButton.Text = "Previous Page";
             PrevPageButton.UseVisualStyleBackColor = true;
+            PrevPageButton.Click += PrevPageButton_Click;
             // 
             // lblAuthor
             // 
@@ -100,11 +105,43 @@
             lblPage.TabIndex = 6;
             lblPage.Text = "P#";
             // 
+            // BMButton
+            // 
+            BMButton.Location = new Point(139, 25);
+            BMButton.Name = "BMButton";
+            BMButton.Size = new Size(150, 46);
+            BMButton.TabIndex = 7;
+            BMButton.Text = "Book Mark";
+            BMButton.UseVisualStyleBackColor = true;
+            BMButton.Click += BMButton_Click;
+            // 
+            // GoToButton
+            // 
+            GoToButton.Location = new Point(407, 25);
+            GoToButton.Name = "GoToButton";
+            GoToButton.Size = new Size(150, 46);
+            GoToButton.TabIndex = 8;
+            GoToButton.Text = "Go To...";
+            GoToButton.UseVisualStyleBackColor = true;
+            GoToButton.Click += GoToButton_Click;
+            // 
+            // lblBookmark
+            // 
+            lblBookmark.AutoSize = true;
+            lblBookmark.Location = new Point(655, 126);
+            lblBookmark.Name = "lblBookmark";
+            lblBookmark.Size = new Size(121, 32);
+            lblBookmark.TabIndex = 9;
+            lblBookmark.Text = "Bookmark";
+            // 
             // BookDetails
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblBookmark);
+            Controls.Add(GoToButton);
+            Controls.Add(BMButton);
             Controls.Add(lblPage);
             Controls.Add(lblSerial);
             Controls.Add(lblTitle);
@@ -127,5 +164,8 @@
         private Label lblTitle;
         private Label lblSerial;
         private Label lblPage;
+        private Button BMButton;
+        private Button GoToButton;
+        private Label lblBookmark;
     }
 }

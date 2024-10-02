@@ -15,7 +15,7 @@ namespace E1ExtraCredit
 
         private Book selectedBook;
         private int currentPage = 1;
-        private int bookMarkPage = 1;
+        private int bookmarkPage = 1;
         public BookDetails(Book book)
         {
             InitializeComponent();
@@ -27,6 +27,38 @@ namespace E1ExtraCredit
             lblSerial.Text = $"Serial Number: {book._serialNumber}";
             lblPage.Text = $"Page: {currentPage}/{book._page}";
 
+            NextPageButton.Enabled = true;
+            PrevPageButton.Enabled = true;
+        }
+
+        private void NextPageButton_Click(object sender, EventArgs e)
+        {
+            if (currentPage < selectedBook._page)
+            {
+                currentPage++;
+                lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
+            }
+        }
+
+        private void PrevPageButton_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
+            }
+        }
+
+        private void BMButton_Click(object sender, EventArgs e)
+        {
+            bookmarkPage = currentPage;
+            lblBookmark.Text = $"Bookmark saved at page {bookmarkPage}";
+        }
+
+        private void GoToButton_Click(object sender, EventArgs e)
+        {
+            currentPage = bookmarkPage;
+            lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
         }
     }
 }
