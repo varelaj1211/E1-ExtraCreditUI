@@ -3,7 +3,9 @@ namespace E1ExtraCredit
     public static class Program
     {
 
-        public delegate void UpdateLibrary(List<SerialNum> books);
+        public delegate void UpdateLibrary(List<string> books);
+        public delegate void SelectBookDel(string serialNum);
+        
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

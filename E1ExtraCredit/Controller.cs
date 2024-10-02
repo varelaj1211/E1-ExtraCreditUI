@@ -21,7 +21,7 @@ namespace E1ExtraCredit
 
         public void GoToPgHandler(int page)
         { 
-        
+            
         }
 
 
@@ -43,9 +43,9 @@ namespace E1ExtraCredit
         { 
         
         }
-        public void SelectBMHandler(SerialNum serialNum)
+        public void SelectBMHandler(string serialNum)
         { 
-        
+            
         }
 
         public void SetUpdateLibrary(UpdateLibrary m)

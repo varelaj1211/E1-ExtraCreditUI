@@ -54,6 +54,7 @@
             button1.TabIndex = 1;
             button1.Text = "Sync Library from cloud";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
