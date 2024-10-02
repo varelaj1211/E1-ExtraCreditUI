@@ -128,7 +128,7 @@
             // lblBookmark
             // 
             lblBookmark.AutoSize = true;
-            lblBookmark.Location = new Point(655, 126);
+            lblBookmark.Location = new Point(587, 119);
             lblBookmark.Name = "lblBookmark";
             lblBookmark.Size = new Size(121, 32);
             lblBookmark.TabIndex = 9;
