@@ -25,8 +25,12 @@ namespace E1ExtraCredit
 
         public void GoToPgHandler(int page, Book book)
         {
-            book.CurrentPage = page;
-            _page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+            if(page <= book.Page && page >= 1)
+            {
+                book.CurrentPage = page;
+                _page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+            }
+            
         }
 
 
@@ -55,13 +59,40 @@ namespace E1ExtraCredit
         }
         public void RemoveBMHandler(Book book)
         {
-            book.BMPage = 0;
-            _bookmark.Text = "No bookmark set";
+            int inx = book.BookMarks.IndexOf(book.CurrentPage);
+            if (book.BookMarks.Contains(book.CurrentPage) && book.CurrentPage == book.BookMarks[inx])
+            { 
+
+                book.BookMarks.RemoveAt(inx);
+
+                StringBuilder sb = new StringBuilder();
+                foreach (int s in book.BookMarks)
+                {
+                    sb.Append($"Bookmark saved at page {s}\n");
+                }
+                _bookmark.Text = sb.ToString();
+            }
+            
         }
         public void SelectBMHandler(Book book)
         {
-            book.BMPage = book.CurrentPage;
-            _bookmark.Text = $"Bookmark saved at page {book.BMPage}";
+            if(book.BookMarks.Count < 5)
+            {
+                book.BMPage = book.CurrentPage;
+                if(!book.BookMarks.Contains(book.CurrentPage))
+                {
+                    book.BookMarks.Add(book.BMPage);
+                    StringBuilder sb = new StringBuilder();
+                    foreach (int s in book.BookMarks)
+                    {
+                        sb.Append($"Bookmark saved at page {s}\n");
+                    }
+                    _bookmark.Text = sb.ToString();
+                }
+                
+                
+            }
+            
         }
 
        

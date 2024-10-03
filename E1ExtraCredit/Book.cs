@@ -19,6 +19,8 @@ namespace E1ExtraCredit
 
         public int BMPage { get; set; } = 1;
 
+
+        public List<int> BookMarks = new List<int>();
         
 
         public Book() { }

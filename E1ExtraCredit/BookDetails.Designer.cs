@@ -39,6 +39,7 @@
             GoToButton = new Button();
             Bookmark = new Label();
             RemoveBMbutton = new Button();
+            GoToPageTextBox = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -145,11 +146,19 @@
             RemoveBMbutton.UseVisualStyleBackColor = true;
             RemoveBMbutton.Click += RemoveBMbutton_Click;
             // 
+            // GoToPageTextBox
+            // 
+            GoToPageTextBox.Location = new Point(781, 32);
+            GoToPageTextBox.Name = "GoToPageTextBox";
+            GoToPageTextBox.Size = new Size(200, 39);
+            GoToPageTextBox.TabIndex = 11;
+            // 
             // BookDetails
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1192, 450);
+            Controls.Add(GoToPageTextBox);
             Controls.Add(RemoveBMbutton);
             Controls.Add(Bookmark);
             Controls.Add(GoToButton);
@@ -180,5 +189,6 @@
         private Button GoToButton;
         private Label Bookmark;
         private Button RemoveBMbutton;
+        private TextBox GoToPageTextBox;
     }
 }

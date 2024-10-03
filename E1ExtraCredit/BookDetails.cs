@@ -16,8 +16,7 @@ namespace E1ExtraCredit
         private Book selectedBook;
         private Controller controller;
 
-        //private int currentPage = 1;
-        // private int bookmarkPage = 1;
+        
         public BookDetails(Book book)
         {
             InitializeComponent();
@@ -29,12 +28,16 @@ namespace E1ExtraCredit
             Author.Text = $"Author: {book.Author}";
             Serial.Text = $"Serial Number: {book.SerialNumber}";
             Page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+            GoToPageTextBox.Text = "";
+
+            StringBuilder sb = new StringBuilder();
+            foreach (int s in book.BookMarks)
+            {
+                sb.Append($"Bookmark saved at page {s}\n");
+            }
+            Bookmark.Text = sb.ToString();
 
 
-            //NextPageButton.Click += new EventHandler(NextPageButton_Click);
-            //PrevPageButton.Click += new EventHandler(PrevPageButton_Click);
-            //BMButton.Click += new EventHandler(BMButton_Click);
-            //GoToButton.Click += new EventHandler(GoToButton_Click);
 
             controller = new Controller(model, Page, Bookmark);
 
@@ -59,13 +62,18 @@ namespace E1ExtraCredit
 
         private void GoToButton_Click(object sender, EventArgs e)
         {
-            controller.GoToPgHandler(selectedBook.CurrentPage, selectedBook);
+            int crp = selectedBook.CurrentPage;
+            controller.GoToPgHandler(int.Parse(GoToPageTextBox.Text), selectedBook);
+            if (selectedBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
+            GoToPageTextBox.Clear();
+            
 
         }
 
         private void RemoveBMbutton_Click(object sender, EventArgs e)
-        {
+        { 
             controller.RemoveBMHandler(selectedBook);
+            
         }
     }
 }
