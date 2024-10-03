@@ -31,10 +31,10 @@ namespace E1ExtraCredit
             Page.Text = $"Page: {book.CurrentPage}/{book.Page}";
 
 
-            NextPageButton.Click += new EventHandler(NextPageButton_Click);
-            PrevPageButton.Click += new EventHandler(PrevPageButton_Click);
-            BMButton.Click += new EventHandler(BMButton_Click);
-            GoToButton.Click += new EventHandler(GoToButton_Click);
+            //NextPageButton.Click += new EventHandler(NextPageButton_Click);
+            //PrevPageButton.Click += new EventHandler(PrevPageButton_Click);
+            //BMButton.Click += new EventHandler(BMButton_Click);
+            //GoToButton.Click += new EventHandler(GoToButton_Click);
 
             controller = new Controller(model, Page, Bookmark);
 
