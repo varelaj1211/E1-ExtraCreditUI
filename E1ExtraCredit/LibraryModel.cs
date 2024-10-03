@@ -8,7 +8,7 @@ namespace E1ExtraCredit
 {
     public class LibraryModel
     {
-        public List<Book> books;// = new List<Book>();
+        public List<Book> books;
 
 
         public LibraryModel() {
@@ -39,8 +39,7 @@ namespace E1ExtraCredit
             books.Add(Book1);
             books.Add(Book2);
             books.Add(Book3);
-           // books.Add(Book4);
-           // books.Add(Book5);
+           
         }
 
 
@@ -62,24 +61,4 @@ namespace E1ExtraCredit
         }
 
     }
-
-
-    public class Book
-    {
-        public int _page { get; set; }
-        public string _title { get; set; }
-
-        public string _author { get; set; }
-
-        public string _serialNumber;
-
-        public Book() 
-        {
-        }   
-    }
-
-    //testing same file different spot
-
-
-
 }
