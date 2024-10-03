@@ -5,7 +5,13 @@ namespace E1ExtraCredit
 
         public delegate void UpdateLibrary(List<string> books);
         public delegate void SelectBookDel(string serialNum);
-        
+        public delegate void RemoveBookmarkDel(int page);
+        public delegate void SetBookmark();
+        public delegate void GoToDel(int page);
+        public delegate void PrevPageDel();
+        public delegate void NextPageDel();
+
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
