@@ -14,18 +14,29 @@ namespace E1ExtraCredit
     {
 
         private Book selectedBook;
-        private int currentPage = 1;
-        private int bookmarkPage = 1;
+        private Controller controller;
+
+        //private int currentPage = 1;
+        // private int bookmarkPage = 1;
         public BookDetails(Book book)
         {
             InitializeComponent();
             selectedBook = book;
+            LibraryModel model = new LibraryModel();
 
-       
-            lblTitle.Text = $"Title: {book._title}";
-            lblAuthor.Text = $"Author: {book._author}";
-            lblSerial.Text = $"Serial Number: {book._serialNumber}";
-            lblPage.Text = $"Page: {currentPage}/{book._page}";
+
+            Title.Text = $"Title: {book.Title}";
+            Author.Text = $"Author: {book.Author}";
+            Serial.Text = $"Serial Number: {book.SerialNumber}";
+            Page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+
+
+            NextPageButton.Click += new EventHandler(NextPageButton_Click);
+            PrevPageButton.Click += new EventHandler(PrevPageButton_Click);
+            BMButton.Click += new EventHandler(BMButton_Click);
+            GoToButton.Click += new EventHandler(GoToButton_Click);
+
+            controller = new Controller(model, Page, Bookmark);
 
             NextPageButton.Enabled = true;
             PrevPageButton.Enabled = true;
@@ -33,32 +44,28 @@ namespace E1ExtraCredit
 
         private void NextPageButton_Click(object sender, EventArgs e)
         {
-            if (currentPage < selectedBook._page)
-            {
-                currentPage++;
-                lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
-            }
+            controller.NextPgHandler(selectedBook);
         }
 
         private void PrevPageButton_Click(object sender, EventArgs e)
         {
-            if (currentPage > 1)
-            {
-                currentPage--;
-                lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
-            }
+            controller.PrevPgHandler(selectedBook);
         }
 
         private void BMButton_Click(object sender, EventArgs e)
         {
-            bookmarkPage = currentPage;
-            lblBookmark.Text = $"Bookmark saved at page {bookmarkPage}";
+            controller.SelectBMHandler(selectedBook);
         }
 
         private void GoToButton_Click(object sender, EventArgs e)
         {
-            currentPage = bookmarkPage;
-            lblPage.Text = $"Page: {currentPage}/{selectedBook._page}";
+            controller.GoToPgHandler(selectedBook.CurrentPage, selectedBook);
+
+        }
+
+        private void RemoveBMbutton_Click(object sender, EventArgs e)
+        {
+            controller.RemoveBMHandler(selectedBook);
         }
     }
 }

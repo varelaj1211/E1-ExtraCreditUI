@@ -14,18 +14,18 @@ namespace E1ExtraCredit
             MessageBox.Show("Synchrozing Libraries");
             Book Book4 = new Book()
             {
-                _page = 832,
-                _title = "The Shining ",
-                _author = "Stephen King ",
-                _serialNumber = "3768925630"
+                Page = 832,
+                Title = "The Shining ",
+                Author = "Stephen King ",
+                SerialNumber = "3768925630"
             };
 
             Book Book5 = new Book()
             {
-                _page = 283,
-                _title = "Hunger Games ",
-                _author = "Suzanne Collins ",
-                _serialNumber = "3567650928"
+                Page = 283,
+                Title = "Hunger Games ",
+                Author = "Suzanne Collins ",
+                SerialNumber = "3567650928"
             };
             model.AddBook(Book4);
             model.AddBook(Book5);
@@ -46,7 +46,7 @@ namespace E1ExtraCredit
             {
                 foreach (Book b in model.books)
                 {
-                    BookListViiew.Items.Add(new ListViewItem(b._title));
+                    BookListViiew.Items.Add(new ListViewItem(b.Title));
                 }
             }
         }

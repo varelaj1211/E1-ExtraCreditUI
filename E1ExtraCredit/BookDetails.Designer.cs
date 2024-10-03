@@ -31,13 +31,14 @@
             button1 = new Button();
             NextPageButton = new Button();
             PrevPageButton = new Button();
-            lblAuthor = new Label();
-            lblTitle = new Label();
-            lblSerial = new Label();
-            lblPage = new Label();
+            Author = new Label();
+            Title = new Label();
+            Serial = new Label();
+            Page = new Label();
             BMButton = new Button();
             GoToButton = new Button();
-            lblBookmark = new Label();
+            Bookmark = new Label();
+            RemoveBMbutton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -69,45 +70,45 @@
             PrevPageButton.UseVisualStyleBackColor = true;
             PrevPageButton.Click += PrevPageButton_Click;
             // 
-            // lblAuthor
+            // Author
             // 
-            lblAuthor.AutoSize = true;
-            lblAuthor.Location = new Point(106, 98);
-            lblAuthor.Name = "lblAuthor";
-            lblAuthor.Size = new Size(87, 32);
-            lblAuthor.TabIndex = 3;
-            lblAuthor.Text = "Author";
+            Author.AutoSize = true;
+            Author.Location = new Point(106, 98);
+            Author.Name = "Author";
+            Author.Size = new Size(87, 32);
+            Author.TabIndex = 3;
+            Author.Text = "Author";
             // 
-            // lblTitle
+            // Title
             // 
-            lblTitle.AutoSize = true;
-            lblTitle.Location = new Point(117, 162);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(60, 32);
-            lblTitle.TabIndex = 4;
-            lblTitle.Text = "Title";
+            Title.AutoSize = true;
+            Title.Location = new Point(117, 162);
+            Title.Name = "Title";
+            Title.Size = new Size(60, 32);
+            Title.TabIndex = 4;
+            Title.Text = "Title";
             // 
-            // lblSerial
+            // Serial
             // 
-            lblSerial.AutoSize = true;
-            lblSerial.Location = new Point(110, 225);
-            lblSerial.Name = "lblSerial";
-            lblSerial.Size = new Size(167, 32);
-            lblSerial.TabIndex = 5;
-            lblSerial.Text = "Serial Number";
+            Serial.AutoSize = true;
+            Serial.Location = new Point(110, 225);
+            Serial.Name = "Serial";
+            Serial.Size = new Size(167, 32);
+            Serial.TabIndex = 5;
+            Serial.Text = "Serial Number";
             // 
-            // lblPage
+            // Page
             // 
-            lblPage.AutoSize = true;
-            lblPage.Location = new Point(328, 364);
-            lblPage.Name = "lblPage";
-            lblPage.Size = new Size(41, 32);
-            lblPage.TabIndex = 6;
-            lblPage.Text = "P#";
+            Page.AutoSize = true;
+            Page.Location = new Point(328, 364);
+            Page.Name = "Page";
+            Page.Size = new Size(41, 32);
+            Page.TabIndex = 6;
+            Page.Text = "P#";
             // 
             // BMButton
             // 
-            BMButton.Location = new Point(139, 25);
+            BMButton.Location = new Point(75, 25);
             BMButton.Name = "BMButton";
             BMButton.Size = new Size(150, 46);
             BMButton.TabIndex = 7;
@@ -117,7 +118,7 @@
             // 
             // GoToButton
             // 
-            GoToButton.Location = new Point(407, 25);
+            GoToButton.Location = new Point(578, 25);
             GoToButton.Name = "GoToButton";
             GoToButton.Size = new Size(150, 46);
             GoToButton.TabIndex = 8;
@@ -125,27 +126,38 @@
             GoToButton.UseVisualStyleBackColor = true;
             GoToButton.Click += GoToButton_Click;
             // 
-            // lblBookmark
+            // Bookmark
             // 
-            lblBookmark.AutoSize = true;
-            lblBookmark.Location = new Point(587, 119);
-            lblBookmark.Name = "lblBookmark";
-            lblBookmark.Size = new Size(121, 32);
-            lblBookmark.TabIndex = 9;
-            lblBookmark.Text = "Bookmark";
+            Bookmark.AutoSize = true;
+            Bookmark.Location = new Point(587, 119);
+            Bookmark.Name = "Bookmark";
+            Bookmark.Size = new Size(121, 32);
+            Bookmark.TabIndex = 9;
+            Bookmark.Text = "Bookmark";
+            // 
+            // RemoveBMbutton
+            // 
+            RemoveBMbutton.Location = new Point(328, 25);
+            RemoveBMbutton.Name = "RemoveBMbutton";
+            RemoveBMbutton.Size = new Size(150, 46);
+            RemoveBMbutton.TabIndex = 10;
+            RemoveBMbutton.Text = "UnBook Mark";
+            RemoveBMbutton.UseVisualStyleBackColor = true;
+            RemoveBMbutton.Click += RemoveBMbutton_Click;
             // 
             // BookDetails
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(lblBookmark);
+            Controls.Add(RemoveBMbutton);
+            Controls.Add(Bookmark);
             Controls.Add(GoToButton);
             Controls.Add(BMButton);
-            Controls.Add(lblPage);
-            Controls.Add(lblSerial);
-            Controls.Add(lblTitle);
-            Controls.Add(lblAuthor);
+            Controls.Add(Page);
+            Controls.Add(Serial);
+            Controls.Add(Title);
+            Controls.Add(Author);
             Controls.Add(PrevPageButton);
             Controls.Add(NextPageButton);
             Controls.Add(button1);
@@ -160,12 +172,13 @@
         private Button button1;
         private Button NextPageButton;
         private Button PrevPageButton;
-        private Label lblAuthor;
-        private Label lblTitle;
-        private Label lblSerial;
-        private Label lblPage;
+        private Label Author;
+        private Label Title;
+        private Label Serial;
+        private Label Page;
         private Button BMButton;
         private Button GoToButton;
-        private Label lblBookmark;
+        private Label Bookmark;
+        private Button RemoveBMbutton;
     }
 }

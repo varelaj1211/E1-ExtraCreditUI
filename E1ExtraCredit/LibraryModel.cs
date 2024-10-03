@@ -15,24 +15,24 @@ namespace E1ExtraCredit
             books = new List<Book>();
             Book Book1 = new Book()
             {
-                _page = 678,
-                _title = "Winnie-The-Pooh ",
-                _author = "A. A. Mine ",
-                _serialNumber = "3897259723"
+                Page = 678,
+                Title = "Winnie-The-Pooh ",
+                Author = "A. A. Mine ",
+                SerialNumber = "3897259723"
             };
             Book Book2 = new Book()
             {
-                _page = 1252,
-                _title = "The Maze Runner ",
-                _author = "James Straub ",
-                _serialNumber = "8265473821"
+                Page = 1252,
+                Title = "The Maze Runner ",
+                Author = "James Straub ",
+                SerialNumber = "8265473821"
             };
             Book Book3 = new Book()
             {
-                _page = 574,
-                _title = "50 Shades of Grey ",
-                _author = "E. L. James ",
-                _serialNumber = "7483987265"
+                Page = 574,
+                Title = "50 Shades of Grey ",
+                Author = "E. L. James ",
+                SerialNumber = "7483987265"
             };
 
         
@@ -52,7 +52,7 @@ namespace E1ExtraCredit
         {
             foreach(Book b in books)
             {
-                if(b._serialNumber == SerialNum)
+                if(b.SerialNumber == SerialNum)
                 {
                     books.Remove(b); 
                     break ;
