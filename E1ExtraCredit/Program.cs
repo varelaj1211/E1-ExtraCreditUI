@@ -1,15 +1,18 @@
 namespace E1ExtraCredit
 {
+    public delegate void UpdateLibrary();
+    public delegate void SelectBookDel(int indx);
+    public delegate string RemoveBookmarkDel(Book book);
+    public delegate string SetBookmark(Book book);
+    public delegate void GoToDel(int page, Book book);
+    public delegate void PrevPageDel(Book book);
+    public delegate void NextPageDel(Book book);
+    
+    
     public static class Program
     {
 
-        public delegate void UpdateLibrary(List<string> books);
-        public delegate void SelectBookDel(string serialNum);
-        public delegate void RemoveBookmarkDel(int page);
-        public delegate void SetBookmark();
-        public delegate void GoToDel(int page);
-        public delegate void PrevPageDel();
-        public delegate void NextPageDel();
+        
 
 
         /// <summary>
@@ -22,8 +25,9 @@ namespace E1ExtraCredit
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             LibraryModel m = new LibraryModel();
-
-            Application.Run(new Form1(m));
+            Controller controller = new Controller(m);
+            //BookDetails bookDetails = new BookDetails()
+            Application.Run(new Form1(m, controller.UpdateLibary, controller.SelectedBookHandler));
         }
     }
 }

@@ -13,66 +13,76 @@ namespace E1ExtraCredit
     public partial class BookDetails : Form
     {
 
-        private Book selectedBook;
-        private Controller controller;
+        private Book currBook;
+        private  NextPageDel NextPgHandler;
+        private PrevPageDel PrevPgHandler;
+        private RemoveBookmarkDel RemoveBM;
+        private SetBookmark SelectBM;
+        private  GoToDel SelectedPg;
+        private LibraryModel model;
+        private int index;
 
-        
-        public BookDetails(Book book)
+
+
+        public BookDetails(LibraryModel m, int index, NextPageDel nxtPageDel, PrevPageDel prevPg, RemoveBookmarkDel removeBM, SetBookmark setBM, GoToDel selectedPg)
         {
             InitializeComponent();
-            selectedBook = book;
-            LibraryModel model = new LibraryModel();
+            model = m;
 
-
-            Title.Text = $"Title: {book.Title}";
-            Author.Text = $"Author: {book.Author}";
-            Serial.Text = $"Serial Number: {book.SerialNumber}";
-            Page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+            currBook = m.books[index];
+            
+            Title.Text = $"Title: {currBook.Title}";
+            Author.Text = $"Author: {currBook.Author}";
+            Serial.Text = $"Serial Number: {currBook.SerialNumber}";
+            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
             GoToPageTextBox.Text = "";
 
             StringBuilder sb = new StringBuilder();
-            foreach (int s in book.BookMarks)
+            foreach (int s in currBook.BookMarks)
             {
                 sb.Append($"Bookmark saved at page {s}\n");
             }
             Bookmark.Text = sb.ToString();
 
-
-
-            controller = new Controller(model, Page, Bookmark);
-
             NextPageButton.Enabled = true;
             PrevPageButton.Enabled = true;
+            this.PrevPgHandler = prevPg;
+            this.NextPgHandler = nxtPageDel;
+            this.RemoveBM = removeBM;
+            this.SelectBM = setBM;
+            this.SelectedPg = selectedPg;
         }
 
         private void NextPageButton_Click(object sender, EventArgs e)
         {
-            controller.NextPgHandler(selectedBook);
+            NextPgHandler(currBook);
+            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
         }
 
         private void PrevPageButton_Click(object sender, EventArgs e)
         {
-            controller.PrevPgHandler(selectedBook);
+            PrevPgHandler(currBook);
+            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
         }
 
         private void BMButton_Click(object sender, EventArgs e)
         {
-            controller.SelectBMHandler(selectedBook);
+            
+            Bookmark.Text = SelectBM(currBook);
         }
 
         private void GoToButton_Click(object sender, EventArgs e)
         {
-            int crp = selectedBook.CurrentPage;
-            controller.GoToPgHandler(int.Parse(GoToPageTextBox.Text), selectedBook);
-            if (selectedBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
+            int crp = currBook.CurrentPage;
+            SelectedPg(int.Parse(GoToPageTextBox.Text), currBook);
+            if (currBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
+            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
             GoToPageTextBox.Clear();
-            
-
         }
 
         private void RemoveBMbutton_Click(object sender, EventArgs e)
         { 
-            controller.RemoveBMHandler(selectedBook);
+            Bookmark.Text = RemoveBM(currBook);
             
         }
     }

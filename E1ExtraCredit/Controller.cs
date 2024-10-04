@@ -11,16 +11,13 @@ namespace E1ExtraCredit
     public class Controller
     {
         private LibraryModel model;
-        private Label _page;
-        private Label _bookmark;
+        
 
         
 
-        public Controller(LibraryModel m, Label page, Label bookmark)
+        public Controller(LibraryModel m)
         {
             model = m;
-            _page = page;
-            _bookmark = bookmark;
         }
 
         public void GoToPgHandler(int page, Book book)
@@ -28,9 +25,37 @@ namespace E1ExtraCredit
             if(page <= book.Page && page >= 1)
             {
                 book.CurrentPage = page;
-                _page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+                
             }
             
+        }
+
+        public void UpdateLibary()
+        {
+            Book Book4 = new Book()
+            {
+                Page = 832,
+                Title = "The Shining ",
+                Author = "Stephen King ",
+                SerialNumber = "3768925630"
+            };
+
+            Book Book5 = new Book()
+            {
+                Page = 283,
+                Title = "Hunger Games ",
+                Author = "Suzanne Collins ",
+                SerialNumber = "3567650928"
+            };
+
+            model.books.Add(Book4);
+            model.books.Add(Book5);
+        }
+
+        public void SelectedBookHandler(int index)
+        { 
+            BookDetails detailsForm = new BookDetails(model,index, NextPgHandler, PrevPgHandler, RemoveBMHandler, SelectBMHandler, GoToPgHandler);
+            detailsForm.ShowDialog();
         }
 
 
@@ -39,7 +64,7 @@ namespace E1ExtraCredit
             if (book.CurrentPage < book.Page)
             {
                 book.CurrentPage++;
-                _page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+                
             }
         }
         public void PrevPgHandler(Book book)
@@ -47,18 +72,15 @@ namespace E1ExtraCredit
             if (book.CurrentPage > 1)
             {
                 book.CurrentPage--;
-                _page.Text = $"Page: {book.CurrentPage}/{book.Page}";
+                
             }
         }
 
 
-        public void GetBMHandler(Book book)
+        
+        public string RemoveBMHandler(Book book)
         {
-            book.BMPage = book.CurrentPage;
-            _bookmark.Text = $"Bookmark saved at page {book.BMPage}";
-        }
-        public void RemoveBMHandler(Book book)
-        {
+            string si = SelectBMHandler(book);
             int inx = book.BookMarks.IndexOf(book.CurrentPage);
             if (book.BookMarks.Contains(book.CurrentPage) && book.CurrentPage == book.BookMarks[inx])
             { 
@@ -70,12 +92,15 @@ namespace E1ExtraCredit
                 {
                     sb.Append($"Bookmark saved at page {s}\n");
                 }
-                _bookmark.Text = sb.ToString();
+                si = sb.ToString();
             }
+
+            return si;
             
         }
-        public void SelectBMHandler(Book book)
+        public string SelectBMHandler(Book book)
         {
+            string si = "";
             if(book.BookMarks.Count < 5)
             {
                 book.BMPage = book.CurrentPage;
@@ -87,14 +112,18 @@ namespace E1ExtraCredit
                     {
                         sb.Append($"Bookmark saved at page {s}\n");
                     }
-                    _bookmark.Text = sb.ToString();
+                    si = sb.ToString();
+
+                   
                 }
-                
-                
+
             }
-            
+
+                return si;
+
+
         }
 
-       
+
     }
 }
