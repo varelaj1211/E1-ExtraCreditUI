@@ -41,6 +41,7 @@ namespace E1ExtraCredit
                 int index = BookListViiew.SelectedItems[0].Index;
 
                 SelectBookDel(index);
+
             }
         }
     }

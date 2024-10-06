@@ -20,7 +20,7 @@ namespace E1ExtraCredit
         private SetBookmark SelectBM;
         private  GoToDel SelectedPg;
         private LibraryModel model;
-        private int index;
+        
 
 
 
@@ -29,7 +29,7 @@ namespace E1ExtraCredit
             InitializeComponent();
             model = m;
 
-            currBook = m.books[index];
+            currBook = model.books[index];
             
             Title.Text = $"Title: {currBook.Title}";
             Author.Text = $"Author: {currBook.Author}";

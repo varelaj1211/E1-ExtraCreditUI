@@ -13,8 +13,6 @@ namespace E1ExtraCredit
         private LibraryModel model;
         
 
-        
-
         public Controller(LibraryModel m)
         {
             model = m;
@@ -55,7 +53,7 @@ namespace E1ExtraCredit
         public void SelectedBookHandler(int index)
         { 
             BookDetails detailsForm = new BookDetails(model,index, NextPgHandler, PrevPgHandler, RemoveBMHandler, SelectBMHandler, GoToPgHandler);
-            detailsForm.ShowDialog();
+            
         }
 
 
