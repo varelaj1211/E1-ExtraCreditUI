@@ -1,11 +1,11 @@
 namespace E1ExtraCredit
 {
-    public partial class Form1 : Form
+    public partial class LibraryView : Form
     {
         private UpdateLibrary UpdateLib;
         private LibraryModel model;
         private SelectBookDel SelectBookDel;
-        public Form1(LibraryModel m, UpdateLibrary updateLib, SelectBookDel selectBook)//, string serialNum)
+        public LibraryView(LibraryModel m, UpdateLibrary updateLib, SelectBookDel selectBook)//, string serialNum)
         {
             InitializeComponent();
             model = m;
@@ -13,6 +13,8 @@ namespace E1ExtraCredit
             this.SelectBookDel = selectBook;
             AddListToListView();
         }
+
+        pr
 
         private void SyncButtonClick(object sender, EventArgs e)
         {

@@ -1,6 +1,6 @@
 ﻿namespace E1ExtraCredit
 {
-    partial class Form1
+    partial class LibraryView
     {
         /// <summary>
         ///  Required designer variable.

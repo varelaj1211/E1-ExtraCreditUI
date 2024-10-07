@@ -14,16 +14,14 @@ namespace E1ExtraCredit
     {
 
         private Book currBook;
-        private  NextPageDel NextPgHandler;
+        private NextPageDel NextPgHandler;
         private PrevPageDel PrevPgHandler;
         private RemoveBookmarkDel RemoveBM;
         private SetBookmark SelectBM;
         private  GoToDel SelectedPg;
         private LibraryModel model;
+        private Status state;
         
-
-
-
         public BookDetails(LibraryModel m, int index, NextPageDel nxtPageDel, PrevPageDel prevPg, RemoveBookmarkDel removeBM, SetBookmark setBM, GoToDel selectedPg)
         {
             InitializeComponent();
@@ -53,36 +51,89 @@ namespace E1ExtraCredit
             this.SelectedPg = selectedPg;
         }
 
+
+        public void UpdateGameState(Status s)
+        {
+            state = s;
+            switch (state)
+            {
+                case Status.RemoveBM:
+                    StringBuilder sbRemove = new StringBuilder();
+                    foreach (int r in currBook.BookMarks)
+                    {
+                        sbRemove.Append($"Bookmark saved at page {r}\n");
+                    }
+                    string newRemoved = sbRemove.ToString();
+                    Bookmark.Text = newRemoved;
+                    break;
+
+                case Status.AddBM:
+
+                    StringBuilder sbAdd = new StringBuilder();
+                    foreach (int a in currBook.BookMarks)
+                    {
+                        sbAdd.Append($"Bookmark saved at page {a}\n");
+                    }
+                    string newAdded = sbAdd.ToString();
+                    Bookmark.Text = newAdded;
+                    break;
+
+                case Status.Sync:
+                    Bookmark.Text = "";
+                    break;
+
+                case Status.NextPg:
+                    Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
+                    break;
+
+                case Status.PrevPg:
+                    Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
+                    break;
+
+                case Status.GoToPg:
+                    int crp = currBook.CurrentPage;
+                    if (currBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
+                    Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
+                    GoToPageTextBox.Clear();
+                    break;
+               
+
+            }
+            
+        
+        
+        
+        }
+
+
         private void NextPageButton_Click(object sender, EventArgs e)
         {
             NextPgHandler(currBook);
-            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
+            
         }
 
         private void PrevPageButton_Click(object sender, EventArgs e)
         {
             PrevPgHandler(currBook);
-            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
+            
         }
 
         private void BMButton_Click(object sender, EventArgs e)
         {
             
-            Bookmark.Text = SelectBM(currBook);
+            SelectBM(currBook, currBook.BookMarks);
         }
 
         private void GoToButton_Click(object sender, EventArgs e)
         {
-            int crp = currBook.CurrentPage;
+            
             SelectedPg(int.Parse(GoToPageTextBox.Text), currBook);
-            if (currBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
-            Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
-            GoToPageTextBox.Clear();
+            
         }
 
         private void RemoveBMbutton_Click(object sender, EventArgs e)
         { 
-            Bookmark.Text = RemoveBM(currBook);
+            RemoveBM(currBook, currBook.BookMarks);
             
         }
     }

@@ -8,14 +8,23 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace E1ExtraCredit
 {
     
+
+
     public class Controller
     {
         private LibraryModel model;
-        
+        public UpdateViewState observer;
+        public UpdateLibrary libraryObserver;
+        private Status state;
 
         public Controller(LibraryModel m)
         {
             model = m;
+        }
+
+        public void RegisterObserver(UpdateViewState o)
+        {
+            observer = o;
         }
 
         public void GoToPgHandler(int page, Book book)
@@ -23,10 +32,14 @@ namespace E1ExtraCredit
             if(page <= book.Page && page >= 1)
             {
                 book.CurrentPage = page;
+                state = Status.GoToPg;
                 
             }
-            
+            observer(state);
         }
+
+
+
 
         public void UpdateLibary()
         {
@@ -53,6 +66,8 @@ namespace E1ExtraCredit
         public void SelectedBookHandler(int index)
         { 
             BookDetails detailsForm = new BookDetails(model,index, NextPgHandler, PrevPgHandler, RemoveBMHandler, SelectBMHandler, GoToPgHandler);
+            state = Status.SelectBook;
+
             
         }
 
@@ -62,64 +77,54 @@ namespace E1ExtraCredit
             if (book.CurrentPage < book.Page)
             {
                 book.CurrentPage++;
+                state = Status.NextPg;
                 
             }
+            observer(state);
         }
         public void PrevPgHandler(Book book)
         {
             if (book.CurrentPage > 1)
             {
                 book.CurrentPage--;
-                
+                state = Status.PrevPg;
             }
+            observer(state);
         }
 
 
         
-        public string RemoveBMHandler(Book book)
+        public void RemoveBMHandler(Book book, List<int> pagesList)
         {
-            string si = SelectBMHandler(book);
+            //string si = SelectBMHandler(book);
             int inx = book.BookMarks.IndexOf(book.CurrentPage);
             if (book.BookMarks.Contains(book.CurrentPage) && book.CurrentPage == book.BookMarks[inx])
             { 
 
                 book.BookMarks.RemoveAt(inx);
-
-                StringBuilder sb = new StringBuilder();
-                foreach (int s in book.BookMarks)
-                {
-                    sb.Append($"Bookmark saved at page {s}\n");
-                }
-                si = sb.ToString();
+                state = Status.RemoveBM;
+                
             }
+            observer(state);
+            //return si;
 
-            return si;
-            
         }
-        public string SelectBMHandler(Book book)
+        public void SelectBMHandler(Book book, List<int> pagesList)
         {
-            string si = "";
+            
             if(book.BookMarks.Count < 5)
             {
                 book.BMPage = book.CurrentPage;
-                if(!book.BookMarks.Contains(book.CurrentPage))
+                if(!pagesList.Contains(book.CurrentPage))
                 {
                     book.BookMarks.Add(book.BMPage);
-                    StringBuilder sb = new StringBuilder();
-                    foreach (int s in book.BookMarks)
-                    {
-                        sb.Append($"Bookmark saved at page {s}\n");
-                    }
-                    si = sb.ToString();
 
-                   
+                    state = Status.AddBM;
                 }
 
             }
 
-                return si;
-
-
+            observer(state);
         }
 
 
