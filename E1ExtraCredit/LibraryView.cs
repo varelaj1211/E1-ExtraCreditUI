@@ -2,25 +2,27 @@ namespace E1ExtraCredit
 {
     public partial class LibraryView : Form
     {
-        private UpdateLibrary UpdateLib;
+        
         private LibraryModel model;
         private SelectBookDel SelectBookDel;
-        public LibraryView(LibraryModel m, UpdateLibrary updateLib, SelectBookDel selectBook)//, string serialNum)
+        private SyncLibDel SyncLibDel;
+        private Status state;
+        public LibraryView(LibraryModel m, SyncLibDel syncLib, SelectBookDel selectBook)//, string serialNum)
         {
             InitializeComponent();
             model = m;
-            this.UpdateLib = updateLib;
+            this.SyncLibDel = syncLib;
             this.SelectBookDel = selectBook;
             AddListToListView();
         }
 
-        pr
+        
 
         private void SyncButtonClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Synchrozing Libraries");
-            UpdateLib();
-            AddListToListView();
+
+            SyncLibDel(model.books);
+            
 
         }
 
@@ -38,6 +40,8 @@ namespace E1ExtraCredit
 
         private void BookListViiew_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            
             if (BookListViiew.SelectedItems.Count > 0)
             {
                 int index = BookListViiew.SelectedItems[0].Index;
@@ -46,5 +50,28 @@ namespace E1ExtraCredit
 
             }
         }
+
+       
+
+        public void UpdateLibraryView(Status s)
+        {
+            state = s;
+            switch (state)
+            {
+                case Status.Sync:
+                    MessageBox.Show("Synchrozing Libraries");
+                    AddListToListView();
+                    SyncButton.Enabled = false;
+                    break;
+
+                case Status.SelectBook:
+                    MessageBox.Show("You have selected a book");
+                    break;
+
+            }
+
+        }
+
+        
     }
 }

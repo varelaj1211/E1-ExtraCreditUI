@@ -1,6 +1,7 @@
 namespace E1ExtraCredit
 {
-    public delegate void UpdateLibrary();//List<Book> books);
+    public delegate void UpdateLibrary(Status s);
+    public delegate void SyncLibDel(List<Book> books);
     public delegate void SelectBookDel(int indx);
     public delegate void RemoveBookmarkDel(Book book, List<int> pagesList);
     public delegate void SetBookmark(Book book, List<int> pagesList);
@@ -26,9 +27,11 @@ namespace E1ExtraCredit
             ApplicationConfiguration.Initialize();
             LibraryModel m = new LibraryModel();
             Controller controller = new Controller(m);
-            BookDetails details = new BookDetails(m, 0, controller.NextPgHandler, controller.PrevPgHandler, controller.RemoveBMHandler, controller.SelectBMHandler, controller.GoToPgHandler);
-            LibraryView libView = new LibraryView(m, controller.UpdateLibary, controller.SelectedBookHandler);
-            controller.RegisterObserver(details.UpdateGameState);
+            LibraryView libView = new LibraryView(m, controller.SyncLibaryHandler, controller.SelectedBookHandler);
+            //BookDetails details = new BookDetails(m, 2, controller.NextPgHandler, controller.PrevPgHandler, controller.RemoveBMHandler, controller.SelectBMHandler, controller.GoToPgHandler);
+            
+            controller.RegisterLibaryObserver(libView.UpdateLibraryView);
+            //controller.RegisterDetailsObserver(details.UpdateGameState);
             Application.Run(libView);
         }
     }

@@ -92,7 +92,6 @@ namespace E1ExtraCredit
 
                 case Status.GoToPg:
                     int crp = currBook.CurrentPage;
-                    if (currBook.CurrentPage == crp) MessageBox.Show("Invalid Page\n\nPlease try again");
                     Page.Text = $"Page: {currBook.CurrentPage}/{currBook.Page}";
                     GoToPageTextBox.Clear();
                     break;

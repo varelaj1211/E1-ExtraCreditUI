@@ -94,12 +94,12 @@
             // 
             BookListViiew.Location = new Point(66, 134);
             BookListViiew.Name = "BookListViiew";
-            BookListViiew.Size = new Size(340, 213);
+            BookListViiew.Size = new Size(679, 194);
             BookListViiew.TabIndex = 6;
             BookListViiew.UseCompatibleStateImageBehavior = false;
             BookListViiew.SelectedIndexChanged += BookListViiew_SelectedIndexChanged;
             // 
-            // Form1
+            // LibraryView
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -111,7 +111,7 @@
             Controls.Add(label2);
             Controls.Add(SyncButton);
             Controls.Add(label1);
-            Name = "Form1";
+            Name = "LibraryView";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

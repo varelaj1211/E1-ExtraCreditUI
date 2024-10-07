@@ -13,8 +13,8 @@ namespace E1ExtraCredit
     public class Controller
     {
         private LibraryModel model;
-        public UpdateViewState observer;
-        public UpdateLibrary libraryObserver;
+        private UpdateViewState observer;
+        private UpdateLibrary libraryObserver;
         private Status state;
 
         public Controller(LibraryModel m)
@@ -22,9 +22,14 @@ namespace E1ExtraCredit
             model = m;
         }
 
-        public void RegisterObserver(UpdateViewState o)
+        public void RegisterDetailsObserver(UpdateViewState o)
         {
             observer = o;
+        }
+
+        public void RegisterLibaryObserver(UpdateLibrary ol)
+        {
+            libraryObserver = ol;
         }
 
         public void GoToPgHandler(int page, Book book)
@@ -41,7 +46,7 @@ namespace E1ExtraCredit
 
 
 
-        public void UpdateLibary()
+        public void SyncLibaryHandler(List<Book> books)
         {
             Book Book4 = new Book()
             {
@@ -59,14 +64,19 @@ namespace E1ExtraCredit
                 SerialNumber = "3567650928"
             };
 
-            model.books.Add(Book4);
-            model.books.Add(Book5);
+            books.Add(Book4);
+            books.Add(Book5);
+            state = Status.Sync;
+            libraryObserver(state);
         }
 
         public void SelectedBookHandler(int index)
         { 
             BookDetails detailsForm = new BookDetails(model,index, NextPgHandler, PrevPgHandler, RemoveBMHandler, SelectBMHandler, GoToPgHandler);
+            RegisterDetailsObserver(detailsForm.UpdateGameState);
             state = Status.SelectBook;
+            libraryObserver(state);
+            detailsForm.ShowDialog();
 
             
         }
@@ -78,9 +88,9 @@ namespace E1ExtraCredit
             {
                 book.CurrentPage++;
                 state = Status.NextPg;
-                
+                observer(state);
             }
-            observer(state);
+            
         }
         public void PrevPgHandler(Book book)
         {
